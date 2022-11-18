@@ -1,0 +1,461 @@
+/* ----------*-----------------Reset---------------*-------- */
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+
+    /* -------------------------------------*----------------- Website Theme ---------------*------------------------------------- */
+    --color-primary: hsl(204, 64%, 41%);
+    --color-secondary: hsla(0, 0%, 100%, 0.4);
+
+    --color-tertiary: hsl(0, 0%, 100%);
+    --color-quaternary: hsl(0, 0%, 100%);
+
+    --color-black: rgb(14, 16, 55);
+
+
+    /* ----------------------------------------*----------------- Padding ---------------*-------------------------------- */
+    --padding-d-l-v: calc(2rem + 12vh);
+    --padding-d-l-h: calc(2rem + 12vw);
+
+    --padding-d-mc-v: calc(1rem + 4vh);
+    --padding-d-mc-h: calc(1rem + 4vw);
+
+    --padding-d-m-v: calc(1rem + 2vh);
+    --padding-d-m-h: calc(1rem + 2vw);
+
+    --padding-d-s-h: calc(1rem + 1vw);
+    --padding-d-s-v: calc(1rem + 1vh);
+
+    /* Static */
+    --padding-st-l-h: 3rem;
+    --padding-st-l-v: 2rem;
+
+    --padding-st-m-h: 2.5rem;
+    --padding-st-m-v: 1.5rem;
+
+    --padding-st-s-h: 2rem;
+    --padding-st-s-v: 1rem;
+
+
+/* We have 16px and from 16px we want to have 10px
+How much is that going to be in percentage?
+We're going to grab 100, multiply by 10 and then divide by 16
+	100 X 10 / 16
+So 10px is actually 62.5% of 16px */
+
+/* custom properties */
+
+/* Why do we need static value? 
+	We use them for anchor elements.  
+	The links padding are going to be static values
+We don't care if these links are that responsive, because the padding for this is very small
+	It doesn't matter in the grand scheme of things
+
+But when it comes to the actual layout of the website, layout of the sections of the website, those are the elements that are going to decide on the responsiveness of the website, therefore their sizes have to be dynamic */
+
+/* ----------*------------------------------- Padding --------------------------------------------*-------- */
+
+/* 
+        --------------------- Sizing Nature
+        d     = dynamic
+        st    = static
+
+        --------------------- Sizing
+
+        l     = large
+        m     = medium
+        s     = small
+        xs    = extra small
+        c     = customized
+
+          
+        --------------------- Orientation
+        v  = vertical   (top & bottom)
+        h  = horizontal (right & left)
+  */
+
+
+  /* ----------------------------------------------------------------------------------------------------------------- */
+
+  /*----------*----------*----------* Typography ------------------------------------------------- */
+
+  /* 
+      --------------------- Sizing Nature
+      d     = dynamic
+      st    = static
+      
+      --------------------- Sizing
+      xl    = extra large
+      l     = large
+      m     = medium
+      s     = small
+      xs    = extra small
+      c     = customized
+      
+      --------------------- Family
+      font-family: 'Oswald', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+*/
+
+/* Dynmaic */
+  --font-size-d-lc: calc(3rem + 3.5vw);
+  --font-size-d-l: calc(2rem + 3vw);
+  --font-size-d-mc: calc(2rem + 2.5vw);
+  --font-size-d-m: calc(1rem + 2vw);
+  --font-size-d-sc: calc(1rem + 1.5vw);
+  --font-size-d-s: calc(1rem + 1vw);
+
+  /* Static */
+  --font-size-st-xl: 4rem;
+  --font-size-st-lc: 3.5rem;
+  --font-size-st-l: 3rem;
+  --font-size-st-mc: 2.5rem;
+  --font-size-st-m: 2rem;
+  --font-size-st-sc: 1.5rem;
+  --font-size-st-s: 1rem;
+
+  /* Family */
+  --font-family-title: 'Playfair Display', serif;
+  --font-family-content: 'Playfair Display', serif;
+}
+
+  /* ----------------------------------------------------------------------------------------------------------------- */
+
+  /*----------*----------*----------* Body ------------------------------------------------- */
+
+
+body {
+  background-color: var(--color-primary);
+  font-family: var(--font-family-content);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  border-radius: 1rem;
+}
+
+li {
+  list-style: none;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------- */
+
+/*----------*----------*----------*----------*---------- Utility Classes */
+
+/*----------*----------*----------* Section Padding */
+.section__padding {
+  padding: var(--padding-d-l-v) var(--padding-d-l-h);
+}
+
+/*----------*----------*----------* Section Title */
+.section__title {
+  font-size: var(--font-size-d-sc);
+  font-weight: 900;
+}
+
+/*----------*----------*----------* Section Para */
+.section__para {
+  font-size: var(--font-size-st-sc);
+  color: var(--color-quaternary);
+}
+
+/*----------*----------*----------*----------*---------- Overall Layout */
+
+.container {
+  display: grid;
+  grid-template-columns:
+    [container-start] repeat(12, minmax(min-content, 12.5rem))
+    [container-end];
+
+  grid-template-rows: repeat(9, min-content);
+  justify-content: center;
+}
+
+.overall-layout {
+  grid-column: container-start / container-end;
+}
+
+
+/*----------*----------*----------*----------*---------- Header */
+.header {
+  background-color: var(--color-secondary);
+  padding: var(--padding-d-m-v) var(--padding-d-l-h);
+
+  display: flex;
+  justify-content: space-between;
+  column-gap: 2rem;
+
+  position: relative;
+}
+
+.hamburger {
+  position: fixed;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -49.5rem;
+  left: 0;
+  height: 50rem;
+  width: 100%;
+  background-color: var(--color-secondary);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  /* clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 100%, 0% 0%); */
+  z-index: -1;
+}
+
+.header__logo {
+  font-size: var(--font-size-st-m);
+  color: var(--color-tertiary);
+}
+
+.header__nav {
+  display: flex;
+  gap: 3rem;
+}
+
+.header__nav--link {
+  font-size: var(--font-size-st-sc);
+  color: var(--color-quaternary);
+  transition: all 0.2s ease-in-out;
+}
+
+.header__nav--link:first-child {
+  color: var(--color-black);
+}
+
+.header__nav--link:hover {
+  color: var(--color-black);
+  border-bottom: 2px solid var(--color-tertiary);
+}
+
+/*----------*----------*----------*----------*---------- Hero */
+.hero {
+  height: 80vh;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  position: relative;
+}
+
+.hero__bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* translates the image itself */
+  height: 100%;
+  width: 90%;
+  /* we want to see the sides of the background image */
+  z-index: -1;
+}
+
+.hero__bg img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  /* object-fit allows us to preserve the aspect ratio */
+}
+
+.hero__content {
+  flex-basis: 50%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.hero__content--mini-title {
+  font-size: var(--font-size-st-m);
+  color: var(--color-black);
+}
+
+.hero__content--title {
+  font-size: var(--font-size-d-l);
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.hero__content--para {
+  font-size: var(--font-size-st-m);
+  color: var(--color-primary);
+}
+
+.hero__content--links {
+  display: flex;
+  flex-wrap: wrap;
+  /* so the buttons/divs can wrap to the next line when the screen gets small */
+  gap: 2rem;
+}
+
+.hero__content--links__services,
+.hero__content--links__booking {
+  flex-basis: 15rem;
+
+  padding: var(--padding-st-s-v) var(--padding-st-m-h);
+  border-radius: 5rem;
+  font-size: var(--font-size-st-sc);
+  text-align: center;
+  transition: all 0.25s ease-in-out;
+}
+
+.hero__content--links__services {
+  border: 1px solid transparent;
+  background-color: var(--color-primary);
+  color: var(--color-tertiary);
+}
+
+.hero__content--links__services:hover {
+  background: none;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.hero__content--links__booking {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.hero__content--links__booking:hover {
+  background-color: var(--color-primary);
+  color: var(--color-tertiary);
+}
+
+
+
+
+
+/* -------------------------------------MEDIA QUERIES------------------------------------------------- */
+
+
+@media screen and (max-width: 900px) {
+  /* --------------------------------------- Section Padding */
+  .section__padding {
+    padding: var(--padding-d-l-v) var(--padding-d-mc-h);
+  }
+
+  /* --------------------------------------- Header */
+  .header__nav {
+    flex-direction: column;
+    justify-content: center;
+
+    padding: var(--padding-d-m-v) var(--padding-d-l-h);
+    background-color: var(--color-black);
+    transition: all 0.65s ease-in-out;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    transform: translateX(400rem);
+
+    z-index: 9;
+  }
+
+  .hamburger {
+    height: 5rem;
+    width: 8rem;
+
+    top: 2rem;
+    right: 5rem;
+
+    background-color: var(--color-black);
+    padding: var(--padding-st-s-v);
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+    z-index: 10;
+  }
+
+  .hamburger__line {
+    height: 2px;
+    background-color: var(--color-primary);
+  }
+
+  .hamburger__line:first-child {
+    width: 50%;
+    transition: all 0.25s ease;
+  }
+
+  .hamburger__line:nth-child(2) {
+    transition: all 0.1s ease;
+  }
+
+  .hamburger__line:last-child {
+    width: 50%;
+    transition: all 0.25s ease;
+
+    align-self: flex-end;
+  }
+
+  /* Dynamic Class */
+  .display__nav {
+    transform: translateX(0);
+  }
+
+  .hamburger__line-1 {
+    transform: rotate(45deg) translateX(1.7rem) translateY(-0.2rem);
+  }
+
+  .hamburger__line-2 {
+    visibility: hidden;
+  }
+
+  .hamburger__line-3 {
+    transform: rotate(-45deg) translateX(-0.2rem) translateY(-2.1rem);
+  }
+
+  /* --------------------------------------- Hero */
+  .hero__content {
+    flex-basis: auto;
+  }
+
+  .hero__bg {
+    width: 100%;
+    /* since going to smaller screen, let's cover the screen with the image */
+  }
+
+  .hero__content--title,
+  .hero__content--para {
+    border-radius: .8rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: var(--color-black)
+  }
+
+  .hero__content--links__booking {
+  border: 1px solid var(--color-primary);
+  color: var(--color-tertiary);
+  background-color: var(--color-primary);
+}
+  
+
+  /* --------------------------------------- Section Title */
+  .section__title {
+    font-size: var(--font-size-st-mc);
+  }
+  
+}
+
+@media screen and (max-width: 500px) {
+  /* --------------------------------------- Section Padding */
+  .section__padding {
+    padding: var(--padding-st-l-v) var(--padding-st-s-h);
+  }
+}
